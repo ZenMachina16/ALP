@@ -1,0 +1,21 @@
+Assume ds:data,cs:code
+Data segment
+source db 10 dup(44H)    ; Source buffer in the data segment
+destination db 10 dup(?)   ; Destination buffer in the extra segment
+Data ends    	
+Code segment
+Start:   
+mov ax, data       ; Load data segment address into AX
+mov ds, ax          ; Set data segment address to DS
+mov ax, data      ; Load extra segment address into AX 
+mov es, ax          ; Set extra segment address to ES
+mov si, offset source         ; Load source index with offset of source buffer
+mov di, offset destination    ; Load destination index with offset of destination buffer
+mov cx, 10          ; Set the counter to transfer 10 bytes
+cld              ; Clear direction flag to auto-increment index registers
+rep movsb ; Repeat move string operation to copy bytes from DS:SI to ES:DI
+Int 03h
+
+
+code ends
+end start       
