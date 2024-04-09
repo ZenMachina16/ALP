@@ -1,0 +1,60 @@
+Program 1:
+
+MOV A,#30H 
+MOV A,30H 
+MOV R0,#31H MOV A,R0 
+MOV A,@R0 
+MOV R1#32H MOV A,@R1
+
+Program 2:
+
+MOV A,P0 
+MOV R0,P1 
+MOV@R0,A
+
+Program 3:
+
+MOV  DPTR,#1E1FH MOV A,83H 
+MOV B,82H 
+MOV PSW,#18H 
+MOV R6,A 
+MOV R7,A
+
+Program 4:
+
+Org 0000H
+MOV R0,#40H
+MOV A,@ R0
+MOV R1,A
+CPL A
+INC R0
+DEC R1
+MOV @ R0,A
+
+Program 5:
+
+MOV R0,#55 H
+MOV R1,#45 h
+MOV A,#0F0 h
+ANL  A,R0
+ORL R1,#0FH
+
+Program 6:
+MOV P1,#66H
+MOV 20H,#99h
+ANL P0,# 0EE H
+ANL 20H,#0EE H
+ORL   P0,# 22 H
+ORL  20H,#22 H
+
+XRL P0,#44H
+XRL 20,#44H
+
+
+
+
+
+
+
+
+
