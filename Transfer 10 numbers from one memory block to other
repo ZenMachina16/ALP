@@ -1,0 +1,20 @@
+Assume ds:data, cs:code
+Data segment
+	List1 db 61h, 11h, 22h, 35h, 44h, 55h, 66h, 77h,  88h, 99h ;  Source Array of 10 nos
+	List2 db  0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ; destination array of 10 nos
+	Count db 0Ah
+Data ends    	
+Code segment
+start:  	mov   ax, data        ; Initialize DS
+        	mov   ds, ax  ; 
+	mov	cl, count      	; Initialise counter
+	lea  si, List1	; Initialise base pointer for array
+	Lea di,List2
+again:	mov	al, [si] 	; copy list 1 number to AL
+	Mov  [di],al	; copy AL value to list 2
+	inc si		; increment address of source list
+	inc di		; increment address of destination list
+Loop again		;Repeat the loop until cx becomes 0
+Int 03h
+code ends
+end start    
