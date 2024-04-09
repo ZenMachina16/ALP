@@ -1,0 +1,23 @@
+Assume ds:data, cs:code
+Data segment
+	array db 61h, 05h, 42h, 05H, 12H, 15h, 09h, 14h,  56h, 38h ; Array of10nos
+	small 	db  0
+Data ends    	
+Code segment
+start:	mov 	ax, data	; Initialize DS
+	mov 	ds, ax	; 
+	xor 	di, di      	; Initialise pointer
+	mov ax, 00
+	mov 	cl, 10       	; Initialise counter
+	lea 	bx, array	; Initialise base pointer for array
+back:	cmp 	al, [bx+di] 	; Compare number with maximum
+	jnc 	skip
+	mov 	al, [bx+di]	;  If no > this no swap
+skip:  	 inc 	di         	; Increment pointer
+	dec 	cl          	; Decrement counter
+	jnz 	back       	; check whether all the nos 	
+			; have been scanned
+	mov 	small, al      	; Store maximum number 
+	int 03h
+code ends
+end start   
